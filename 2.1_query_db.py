@@ -1,3 +1,4 @@
+#QUERY database
 from sqlalchemy.orm import sessionmaker
 from models import User,engine
 # above models.py is a copy of 1_create_db_table.py
@@ -17,8 +18,6 @@ session.add(user_1)
 session.add_all([user_2,user_3,user_4,user_5])
 """
 users = session.query(User).all()
-
-"""
 # Many print options
 #print(users)
 user = users[0]
@@ -46,10 +45,5 @@ user = session.query(User).filter_by(id=1).one_or_none()
 print(user.name)
 user.name = "A different name"
 print(user.name)
-session.commit() # run and see the database
-"""
-# to delete id user add the following afer blocking the above if is available
-user = session.query(User).filter_by(id=1).one_or_none()
-session.delete(user)
 session.commit() # run and see the database
 """
